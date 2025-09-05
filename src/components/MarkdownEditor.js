@@ -2,23 +2,22 @@ import React, { useState, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 
 const MarkdownEditor = () => {
-  const [text, setText] = useState("### Welcome to Markdown Editor!\n\nStart typing...");
+  const [markdown, setMarkdown] = useState("# Hello Markdown!");
   const [preview, setPreview] = useState("");
 
   useEffect(() => {
-    setPreview(text);
-  }, [text]);
+    setPreview(markdown);
+  }, [markdown]);
 
   return (
-    <div className="editor-container">
+    <div className="app" style={{ display: "flex", height: "100vh" }}>
       <textarea
         className="textarea"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        placeholder="Write your Markdown here..."
+        value={markdown}
+        onChange={(e) => setMarkdown(e.target.value)}
+        style={{ width: "50%", padding: "10px" }}
       />
-
-      <div className="preview">
+      <div className="preview" style={{ width: "50%", padding: "10px" }}>
         <ReactMarkdown>{preview}</ReactMarkdown>
       </div>
     </div>
